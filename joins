@@ -1,0 +1,27 @@
+#set1 queries;
+#1
+select customers.First_name, customers.Last_name, customers.pack_id, packages.speed from customers inner join packages on customers.pack_id = packages.pack_id;
+#2
+select customers.First_name, customers.Last_name, customers.pack_id, packages.speed from customers inner join packages on customers.pack_id = packages.pack_id where packages.pack_id = 'P102' or packages.pack_id = 'P103' order by customers.Last_name asc;
+#3
+select packages.pack_id, packages.speed, packages.monthly_payment, sector.sector_name from packages join sector on packages.sector_id = sector.sector_id;
+#4
+select customers.First_name, customers.Last_name, customers.pack_id, packages.speed, sector.sector_name from customers inner join packages on customers.pack_id = packages.pack_id join sector on packages.sector_id = sector.sector_id;
+#5
+select customers.First_name, customers.Last_name, customers.pack_id, packages.speed, sector.sector_name from customers inner join packages on customers.pack_id = packages.pack_id join sector on packages.sector_id = sector.sector_id where sector.sector_name = 'IT';
+#6
+select customers.First_name, customers.Last_name, customers.pack_id,customers.Join_date, packages.speed, sector.sector_name from customers inner join packages on customers.pack_id = packages.pack_id join sector on packages.sector_id = sector.sector_id where customers.Join_date = '2006-09-22';
+
+#SET TWO
+#1
+select dept2.first_name, dept2.last_name, dept.region_id, dept.dept_name from dept2 left outer join dept on dept.dept_id = dept2.dept_id;
+#2
+select dept2.first_name, dept2.last_name, dept.region_id, dept.dept_name from dept2 right outer join dept on dept.dept_id = dept2.dept_id;
+#3
+select dept2.first_name, dept2.last_name, dept.region_id from dept2 join dept on dept2.dept_id = dept.dept_id where region_id = 700;
+#4
+select * from dept2 where salary between 1000 and 4000;
+#5
+ select dept2.*, min(dept2.salary) as low_salary, max(dept2.salary) as high_salary from dept2 join dept on dept.dept_id = dept2.dept_id where dept.dept_name = 'HR';
+#6
+select dept2.first_name, dept2.last_name, dept2.dept_name, dept.location from dept2 join dept on dept2.dept_id = dept.dept_id where dept.location = 'Liver pool' or location = 'Manchester';
